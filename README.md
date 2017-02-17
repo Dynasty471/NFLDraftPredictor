@@ -1,3 +1,3 @@
 # NFLDraftPredictor
 
-These aren't real edits. I just want to see how this works.
+This project parses NFL combine and college statistics to predict when college players will be picked
