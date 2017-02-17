@@ -6,10 +6,13 @@ BASE_URL = 'http://www.pro-football-reference.com'
 def parse_player(link):
 	r = requests.get(link)
 	rsoup = BeautifulSoup(r.text, 'html.parser')
-
-		
-#	stats = rsoup.find_all('td')
-
+	seasons = rsoup.find_all('tr')
+	
+	for season in seasons:
+		stats = season.find_all('td')
+		for stat in stats:
+			print(stat.get('data-stat'))
+			print(stat.string)		
 
 def generate_dataset():
 	r = requests.get('http://www.pro-football-reference.com/years/2015/draft.htm')
