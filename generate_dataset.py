@@ -8,13 +8,18 @@ def parse_player(link):
     r = requests.get(link)
     rsoup = BeautifulSoup(r.text, 'html.parser')
     stats = {}
-    get_measurements(rsoup, stats)
+#    get_measurements(rsoup, stats)
+    get_stats(rsoup, stats)
 
-    seasons = rsoup.find_all('tr')	
+def get_stats(soup, stats):
+    seasons = soup.find_all('tr')	
     for season in seasons:
         stats = season.find_all('td')
         for stat in stats:
+            # TODO Do we want to parse for position here and then create
+            # separate functions to parse each position?
             print(stat.get('data-stat'))
+            
             print(stat.string)		
 
 def get_measurements(soup, stats):
